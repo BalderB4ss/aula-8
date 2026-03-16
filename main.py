@@ -43,11 +43,16 @@ aluno8 = Aluno("João", 27, "Boy band")
 # session.add(aluno8)
 # session.commit()
 
-# alunos = session.query(Aluno).all()
-# for i in alunos:
-#     print(f"Nome: {i.nome} | Idade: {i.idade} | Curso: {i.curso}")
+alunos = session.query(Aluno).all()
+for i in alunos:
+    print(f"Nome: {i.nome} | Idade: {i.idade} | Curso: {i.curso}")
 
 aluno_id = session.query(Aluno).filter(Aluno.id == 1).first()
 print(aluno_id)
 
 atualizar_aluno = session.query(Aluno).filter_by(id=1).first()
+atualizar_aluno.curso = "Back-end com Gabriel"
+
+deletar_aluno = session.query(Aluno).filter_by(id=6).first()
+session.delete(deletar_aluno)
+
