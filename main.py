@@ -52,7 +52,14 @@ print(aluno_id)
 
 atualizar_aluno = session.query(Aluno).filter_by(id=1).first()
 atualizar_aluno.curso = "Back-end com Gabriel"
+session.commit()
 
 deletar_aluno = session.query(Aluno).filter_by(id=6).first()
 session.delete(deletar_aluno)
+session.commit()
 
+aluno_maior = session.query(Aluno).filter(Aluno.idade > 20).all()
+print(aluno_maior)
+
+aluno_dev = session.query(Aluno).filter(Aluno.curso.like("%Dev%")).all()
+print(aluno_dev)
